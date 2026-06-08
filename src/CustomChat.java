@@ -10,12 +10,14 @@ public class CustomChat extends Plugin {
     public void init() {
         Vars.netServer.admins.addChatFilter((player, msg) -> {
             if (player == null) return null;
+            // Если сообщение начинается с '/' — это команда, не трогаем её
+            if (msg.startsWith("/")) return msg;
             Team t = player.team();
-            String msgColor = t == Team.derelict ? "[#dadada]" : "[white]";
+            String msgColor = (t == Team.derelict) ? "[#dadada]" : "[white]";
             String formatted =
                 t.emoji + " " + player.name + "[#dadada]: " + msgColor + msg;
             Call.sendMessage(formatted);
-            return null;
+            return null; // оригинальное сообщение не отправляем
         });
     }
 }
