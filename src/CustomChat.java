@@ -5,9 +5,7 @@ import mindustry.gen.Groups;
 import mindustry.gen.Player;
 import mindustry.mod.Plugin;
 public class CustomChat extends Plugin {
-    private String fmt(Player p, String prefix, String msg) {
-        return prefix + p.name + "[#dadada]: " + msg;
-    }
+    private String fmt(Player p, String prefix, String msg) { return prefix + p.name + "[#dadada]: " + msg; }
     @Override
     public void registerClientCommands(CommandHandler handler) {
         handler.register("t", "<msg...>", "Team chat", (String[] a, Player p) ->
